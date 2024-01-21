@@ -4,16 +4,24 @@ on:
   push:
     branches:
       - main
-  pull_request: 
-    # types: 
+  pull_request:
+    # types:
     #   - opened
-    branches: 
+    branches:
       - main
 
 jobs:
   build-job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World1"
-      - run: echo "Hello World2"
-      - run: echo "Hello World3"
+      - run: echo "Build job"
+
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Run job"
+
+  deploy-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploy job to production server"
