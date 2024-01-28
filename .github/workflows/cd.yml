@@ -27,3 +27,19 @@ jobs:
         with:
           name: dist-production
           path: dist
+  deploy-to-production-job:
+    needs: build-production-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download dist folder artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-production
+          path: dist
+
+      - run: ls dist
+
+      - uses: actions/checkout@v4
+
+      - name: publish react to github pages
+        uses: bitovi/github-actions-react-to-github-pages@v1.2.2
