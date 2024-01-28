@@ -1,12 +1,12 @@
-name: "CI"
+name: "build and deploy production"
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "*"
 
 jobs:
-  lint-job:
+  build-production-job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,5 +19,5 @@ jobs:
 
       - run: npm ci
 
-      - name: Run lint
-        run: npm run lint
+      - name: Run build production
+        run: npm run build
